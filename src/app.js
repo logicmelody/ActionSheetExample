@@ -1,31 +1,33 @@
 import React, { Component } from "react";
 import {
 	StyleSheet,
-	Text,
 	View,
 	Button,
 } from "react-native";
 
-import Modal from "react-native-modalbox";
+import ShoppingCartModal from "./shopping-cart-modal";
 
 class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			isShoppingCartModalOpen: false,
+		}
+	}
 	render() {
+		const { isShoppingCartModalOpen } = this.state;
+
 		return (
 			<View style={styles.container}>
 				<Button
 					style={styles.btn}
-					onPress={() => this.refs.myModal.open()}
+					onPress={() => this.setState({ isShoppingCartModalOpen: true })}
 					title={"My Modal"} />
 
-				<Modal
-					style={styles.myModal}
-					position={"bottom"}
-					ref={"myModal"}
-				>
-					<View style={styles.shoppingCartContainer}>
-						<Text style={styles.text}>Shopping Cart</Text>
-					</View>
-				</Modal>
+				<ShoppingCartModal
+					isOpen={isShoppingCartModalOpen}
+					onClosed={() => this.setState({ isShoppingCartModalOpen: false })}
+				/>
 			</View>
 		);
 	}
@@ -37,26 +39,6 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-	},
-
-	// 最外層的Modal來設定Modal的height
-	myModal: {
-		height: 500,
-		borderTopLeftRadius: 20,
-		borderTopRightRadius: 20,
-	},
-
-	// Modal中的View，記得要設定flex: 1跟alignSelf: "stretch"，讓View撐滿整個Modal，
-	// 不然點擊Modal以外的backdrop讓Modal消失這個功能會有問題
-	shoppingCartContainer: {
-		flex: 1,
-		alignSelf: "stretch",
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	text: {
-		color: "black",
-		fontSize: 22
 	},
 	btn: {
 		backgroundColor: "#3B5998",
