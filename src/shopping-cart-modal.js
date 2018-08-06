@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
+	Platform,
 	StyleSheet,
 	Text,
 	View,
@@ -13,6 +14,7 @@ const ShoppingCartModal = ({ isOpen, onClosed }) => {
 		<Modal
 			style={styles.myModal}
 			position={"bottom"}
+			coverScreen={Platform.OS === "android"}
 			isOpen={isOpen}
 			onClosed={onClosed}
 		>
@@ -48,6 +50,9 @@ const styles = StyleSheet.create({
 		alignSelf: "stretch",
 		justifyContent: 'center',
 		alignItems: 'center',
+		backgroundColor: "white",
+		borderTopLeftRadius: 20,
+		borderTopRightRadius: 20,
 	},
 	text: {
 		color: "black",
