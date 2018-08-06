@@ -41,9 +41,9 @@ const styles = StyleSheet.create({
 
 	// 最外層的Modal來設定Modal的height
 	myModal: {
-		justifyContent: 'center',
-		alignItems: 'center',
 		height: 500,
+		borderTopLeftRadius: 20,
+		borderTopRightRadius: 20,
 	},
 
 	// Modal中的View，記得要設定flex: 1跟alignSelf: "stretch"，讓View撐滿整個Modal，
@@ -51,12 +51,11 @@ const styles = StyleSheet.create({
 	shoppingCartContainer: {
 		flex: 1,
 		alignSelf: "stretch",
-		backgroundColor: "blue",
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
 	text: {
-		color: "white",
+		color: "black",
 		fontSize: 22
 	},
 	btn: {
