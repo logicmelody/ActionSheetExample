@@ -11,22 +11,24 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isShoppingCartModalOpen: false,
-		}
+			isOpen: false,
+		};
 	}
 	render() {
-		const { isShoppingCartModalOpen } = this.state;
+		const { isOpen } = this.state;
 
 		return (
 			<View style={styles.container}>
 				<Button
 					style={styles.btn}
-					onPress={() => this.setState({ isShoppingCartModalOpen: true })}
-					title={"My Modal"} />
+					onPress={() => this.setState({ isOpen: true })}
+					title={"My Modal"}
+				/>
 
 				<ShoppingCartModal
-					isOpen={isShoppingCartModalOpen}
-					onClosed={() => this.setState({ isShoppingCartModalOpen: false })}
+					isVisible={isOpen}
+					onBackdropPress={() => this.setState({ isOpen: false })}
+					onSwipe={() => this.setState({ isOpen: false })}
 				/>
 			</View>
 		);
