@@ -28,6 +28,7 @@ class App extends Component {
 				<ShoppingCartModal
 					isVisible={isOpen}
 					onBackdropPress={() => this.setState({ isOpen: false })}
+					onBackButtonPress={() => this.setState({ isOpen: false })}
 					onSwipe={() => this.setState({ isOpen: false })}
 				/>
 			</View>

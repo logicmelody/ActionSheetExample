@@ -8,12 +8,13 @@ import {
 
 import Modal from "react-native-modal";
 
-const ShoppingCartModal = ({ isVisible, onBackdropPress, onSwipe }) => {
+const ShoppingCartModal = ({ isVisible, onBackdropPress, onBackButtonPress, onSwipe }) => {
 	return (
 		<Modal
 			style={styles.myModal}
 			isVisible={isVisible}
 			onBackdropPress={onBackdropPress}
+			onBackButtonPress={onBackButtonPress}
 			swipeDirection={"down"}
 			onSwipe={onSwipe}
 		>
@@ -27,12 +28,14 @@ const ShoppingCartModal = ({ isVisible, onBackdropPress, onSwipe }) => {
 ShoppingCartModal.propTypes = {
 	isVisible: PropTypes.bool,
 	onBackdropPress: PropTypes.func,
+	onBackButtonPress: PropTypes.func,
 	onSwipe: PropTypes.func,
 };
 
 ShoppingCartModal.defaultProps = {
 	isVisible: false,
 	onBackdropPress: () => {},
+	onBackButtonPress: () => {},
 	onSwipe: () => {},
 };
 
